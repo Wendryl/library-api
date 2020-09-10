@@ -21,7 +21,7 @@ $app->get('/books', function(Request $request, Response $response){
         $book_data[$i]['published_date'] = $book->published_date;
         $i++;
     }
-    $response->getBody()->write(json_encode($book_data));
+    return $response->withJson($book_data, 300);
 });
 
 // Insert book
