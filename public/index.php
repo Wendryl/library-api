@@ -21,7 +21,22 @@ $app->get('/books', function(Request $request, Response $response){
         $book_data[$i]['published_date'] = $book->published_date;
         $i++;
     }
-    return $response->withJson($book_data, 300);
+    return $response->withJson($book_data, 200);
+});
+
+// Get book by id
+$app->get('/books/{id}', function(Request $request, Response $response, array $args){
+        $id = $args['id'];
+        $books = new Book();
+        $book_obj = $books->findById($id);
+        if($book_obj == null) {
+            return $response->withJson(array('Message' => "Book not found!"), 404);
+        }
+        $book_data['id'] = $book_obj->id;
+        $book_data['title'] = $book_obj->title;
+        $book_data['author'] = $book_obj->author;
+        $book_data['published_date'] = $book_obj->published_date;
+        return $response->withJson($book_data, 200);
 });
 
 // Insert book
