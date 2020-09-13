@@ -75,4 +75,18 @@ $app->put('/books/{id}', function(Request $request, Response $response, array $a
     return $response->withJson(array('Message' => "Book saved successfully!"), 200);
 });
 
+
+// Delete book
+$app->delete('/books/{id}', function(Request $request, Response $response, array $args) {
+    $id = $args['id'];
+    $book = (new Book())->findById($id);
+    if(!$book) {
+        return $response->withJson(array('Message' => "Book not found!"), 404);
+    }
+    $result = $book->destroy();
+
+
+    return $response->withJson(array('Message' => "Book deleted successfully!"), 200);
+});
+
 $app->run();
