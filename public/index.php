@@ -59,6 +59,9 @@ $app->post('/books', function(Request $request, Response $response){
 $app->put('/books/{id}', function(Request $request, Response $response, array $args) {
     $id = $args['id'];
     $book = (new Book())->findById($id);
+    if(!$book) {
+        return $response->withJson(array('Message' => "Book not found!"), 404);
+    }
     $book_data = $request->getParsedBody();
     $book->title = $book_data['title'];
     $book->author = $book_data['author'];
