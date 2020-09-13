@@ -13,3 +13,11 @@ A library PHP REST API built with slim framework
 **GET**    /books/{id} -> **Show** book data **by id**  
 **PUT**    /books/{id} -> **Update** book data   
 **DELETE** /books/{id} -> **Delete** book  
+
+|**METHOD** |   **URL**   |    **RESULT**     |
+|:---------:|:------------|:------------------|
+|**GET**    | /books      | **Show all** books| 
+|**POST**   |/books       |**Create** Book|   
+|**GET**    |/books/{id}  |**Show** book data **by id**|  
+|**PUT**    |/books/{id}  |**Update** book data   |
+|**DELETE** |/books/{id}  |**Delete** book  |
