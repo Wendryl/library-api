@@ -39,9 +39,26 @@ $app->get('/books/{id}', function(Request $request, Response $response, array $a
         return $response->withJson($book_data, 200);
 });
 
-// Insert book
+// Create book
 $app->post('/books', function(Request $request, Response $response){
     $book = new Book();
+    $book_data = $request->getParsedBody();
+    $book->title = $book_data['title'];
+    $book->author = $book_data['author'];
+    $book->published_date = $book_data['published_date'];
+    $result = $book->save();
+
+    if($result == "") {
+        return $response->withJson(array('Message' => "There are null fields in your request data!"), 400);
+    }
+
+    return $response->withJson(array('Message' => "Book saved successfully!"), 200);
+});
+
+// Update book
+$app->put('/books/{id}', function(Request $request, Response $response, array $args) {
+    $id = $args['id'];
+    $book = (new Book())->findById($id);
     $book_data = $request->getParsedBody();
     $book->title = $book_data['title'];
     $book->author = $book_data['author'];
