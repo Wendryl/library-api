@@ -9,4 +9,7 @@ A library PHP REST API built with slim framework
 
 ## Routes
 *GET* /books -> Show all books  
-*GET* /books/{id} -> Find book data by id
+*POST* /books -> Create Book   
+*GET* /books/{id} -> Show book data by id  
+*PUT* /books/{id} -> Update book data   
+*DELETE* /books/{id} -> Delte book  
