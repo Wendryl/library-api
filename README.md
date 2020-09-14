@@ -1,11 +1,13 @@
 # library-api
 A library PHP REST API built with slim framework
 ## Installation & Usage
-``$ git clone https://github.com/Wendryl/library-api``  
-``$ cd library-api``  
-``$ composer install``  
-``$ mysql -u username -p -h localhost library < library.sql``  
-``$ php -S localhost:3000 -t public``  
+```bash
+$ git clone https://github.com/Wendryl/library-api
+$ cd library-api
+$ composer install
+$ mysql -u username -p -h localhost library < library.sql
+$ php -S localhost:3000 -t public
+```
 
 ## Routes
 |**METHOD** |   **URL**   |    **RESULT**     |
